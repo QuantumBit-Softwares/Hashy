@@ -24,5 +24,14 @@ def pretty_table_to_tuples(input_str):
         if m:
             yield m.groups()
 
-w = csv.writer(sys.stdout)
-w.writerows(pretty_table_to_tuples(input_string))
+
+
+with open('output.csv', 'w') as outcsv:
+    writer = csv.writer(outcsv)
+    writer.writerows(pretty_table_to_tuples(input_string))
+
+#w = csv.writer(sys.stdout)
+#w.writerows(pretty_table_to_tuples(input_string))
+
+print("\n\n\n")
+#print(x)
