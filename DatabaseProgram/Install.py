@@ -18,3 +18,4 @@ if __name__ == '__main__':
     install('cherrypicker')
     install('pandas')
     install('prettytable')
+    install('csv_to_sqlite')
