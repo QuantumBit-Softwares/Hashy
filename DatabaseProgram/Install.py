@@ -15,3 +15,6 @@ if __name__ == '__main__':
     install('tweepy')
     install('nltk')
     install('textblob')
+    install('cherrypicker')
+    install('pandas')
+    install('prettytable')
