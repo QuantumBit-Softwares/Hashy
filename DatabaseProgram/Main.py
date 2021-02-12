@@ -102,7 +102,7 @@ def main():
 	# creating object of TwitterClient Class 
     api = TwitterClient() 
 	# calling function to get tweets
-    query = 'elonmusk' 
+    query = 'GameStop' 
     tweets = api.get_tweets(query, count = 200) 
 
 	# picking positive tweets from tweets && # percentage of positive tweets 
@@ -483,8 +483,9 @@ def main():
     os.mknod("Dumps/Freq_Words.txt")
     os.mknod("Dumps/ScreenNames.txt")
     os.mknod("Dumps/related_hashtags_with_count.txt")
+    os.mknod("Dumps/most_popular_tweets.bin")
     os.mknod("Dumps/LexicalDiversity.json")
-    os.mknod("Dumps/mostpopulartweets.txt")
+
     
     os.mknod("CSV/SENTIMENTS.csv")
     os.mknod("CSV/PICKEDTWEETS.csv")
@@ -493,8 +494,9 @@ def main():
     os.mknod("CSV/Freq_Words.csv")
     os.mknod("CSV/ScreenNames.csv")
     os.mknod("CSV/related_hashtags_with_count.csv")
-    os.mknod("CSV/LexicalDiversity.csv")
     os.mknod("CSV/mostpopulartweets.csv")
+    os.mknod("CSV/LexicalDiversity.csv")
+
     
     os.mknod("Databases/SENTIMENTS.db")
     os.mknod("Databases/PICKEDTWEETS.db")
@@ -503,8 +505,9 @@ def main():
     os.mknod("Databases/Freq_Words.db")
     os.mknod("Databases/ScreenNames.db")
     os.mknod("Databases/related_hashtags_with_count.db")
-    os.mknod("Databases/LexicalDiversity.db")
     os.mknod("Databases/mostpopulartweets.db")
+    os.mknod("Databases/LexicalDiversity.db")
+
 
     
         
@@ -590,7 +593,7 @@ def main():
     [ pt.add_row(row) for row in sorted(retweets, reverse=True)[:5] ]
     pt.max_width['Text'] = 50
     pt.align= 'l'
-    f = open('Dumps/mostpopulartweets.txt','w')
+    f = open('Dumps/most_popular_tweets.bin','w')
     print(pt, file = f)
     
     
@@ -652,11 +655,39 @@ def main():
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('Dumps/mostpopulartweets.txt') as fp:
-      input_string = fp.read()
-    with open('CSV/mostpopulartweets.csv', 'w') as outcsv:
-        writer = csv.writer(outcsv)
-        writer.writerows(pretty_table_to_tuples(input_string))
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
     with open('Dumps/LexicalDiversity.json') as file:
         data = json.load(file)
@@ -664,6 +695,11 @@ def main():
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/LexicalDiversity.csv', encoding='utf-8')
+    
+    
+    
+    
+    
     
     
     #### Conversion from csv to sqlite
@@ -696,9 +732,6 @@ def main():
     
     input_files = ["CSV/LexicalDiversity.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/LexicalDiversity.db", options)
-    
-    input_files = ["CSV/mostpopulartweets.csv"] # pass in a list of CSV files
-    csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
     
     print("SUCESS")
 
