@@ -9,7 +9,7 @@ def pretty_table_to_tuples(input_str):
             yield m.groups()
 
 
-with open('Dumps/most_popular_tweets.bin') as fp:
+with open('Dumps/mostpopulartweets.txt') as fp:
       input_string = fp.read()
 
 
