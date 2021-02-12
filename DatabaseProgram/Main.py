@@ -11,6 +11,8 @@ import json
 from cherrypicker import CherryPicker
 import pandas as pd
 import twitter
+import csv_to_sqlite
+import csv, sys
 
 #################################################
 
@@ -155,14 +157,14 @@ def main():
 # Dumping d into JSON formatted data
     json.dumps(d)
     #percentage sentiment first:
-    d1 = """{
+    d1 = {
     "SENTIMENTS": [
                    {
     "positivesenti" : PP,
     "neutralsenti" : PN,
     "negativesenti" : PY
                    }]    
-    }"""
+    }
     #d1 sentiments percentage
     #print(json.dumps(d1, indent = 1))
 
@@ -455,7 +457,7 @@ def main():
       c = Counter(item)
     
 
-    
+ #   print(json.dumps(d1, indent=1))
 
     #all dumper txt and json
     
@@ -463,8 +465,16 @@ def main():
     # save as Json file
     with open('SENTIMENTS.json', 'w') as json_file:
         json.dump(d1, json_file)
+#    f = open('SENTIMENTS.json','w')
+#    print(json.dumps(d1, indent=1), file=f) # Python 3.x
+    
+
+    
     with open('PICKEDTWEETS.json', 'w') as json_file:
-        json.dump(pickedtweets, json_file)
+       json.dump(pickedtweets, json_file)
+#    f = open('PICKEDTWEETS.json','w')
+#    print(json.dumps(pickedtweets, indent=1), file=f) # Python 3.x
+    
     f = open('PH_trends.json','w')
     print(json.dumps(ph_trends, indent=1), file=f) # Python 3.x
     f = open('related_hashtags_no_count.json','w')
@@ -539,9 +549,82 @@ def main():
     pt.align= 'l'
     f = open('mostpopulartweets.txt','w')
     print(pt, file = f)
+    
+    
+    #### Conversion from dumps to csv
+    # all the usual options are supported
+    with open('SENTIMENTS.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker['SENTIMENTS'].flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('SENTIMENTS.csv', encoding='utf-8')
 
+    with open('PICKEDTWEETS.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker.flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('PICKEDTWEETS.csv', encoding='utf-8')
         
+    with open('PH_trends.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker['trends'].flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('PH_trends.csv', encoding='utf-8')
+    
+    with open('related_hashtags_no_count.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker.flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('related_hashtags_no_count.csv', encoding='utf-8')
+    
+    
+    def pretty_table_to_tuples(input_str):
+        lines = input_str.split("\n")
+        num_columns = len(re.findall("\+", lines[0])) - 1
+        line_regex = r"\|" + (r" +(.*?) +\|"*num_columns)
+        for line in lines:
+            m = re.match(line_regex, line.strip())
+            if m:
+                yield m.groups()
+            
+    with open('Freq_Words.txt') as fp:
+      input_string = fp.read()
+    with open('Freq_Words.csv', 'w') as outcsv:
+        writer = csv.writer(outcsv)
+        writer.writerows(pretty_table_to_tuples(input_string))
+        
+    with open('ScreenNames.txt') as fp:
+      input_string = fp.read()
+    with open('ScreenNames.csv', 'w') as outcsv:
+        writer = csv.writer(outcsv)
+        writer.writerows(pretty_table_to_tuples(input_string))
+        
+    with open('related_hashtags_with_count.txt') as fp:
+      input_string = fp.read()
+    with open('related_hashtags_with_count.csv', 'w') as outcsv:
+        writer = csv.writer(outcsv)
+        writer.writerows(pretty_table_to_tuples(input_string))
+        
+    with open('mostpopulartweets.txt') as fp:
+      input_string = fp.read()
+    with open('mostpopulartweets.csv', 'w') as outcsv:
+        writer = csv.writer(outcsv)
+        writer.writerows(pretty_table_to_tuples(input_string))
+        
+    with open('LexicalDiversity.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker.flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('LexicalDiversity.csv', encoding='utf-8')
+    
 
+
+    
 
 
 
@@ -560,4 +643,3 @@ def main():
 if __name__ == "__main__": 
 	# calling main function 
 	main()
- 
