@@ -21,3 +21,6 @@ javac Run.java
 java Run
 *** THIS WILL INSTALL MODULES AND CREATE THE DATABASE ***
 ```
+<br>
+(directory) DatabaseProgram -> must be deleted for every search. Otherwise error.<br>
+(file) query.txt -> the hashtag to be searched, make a program to java to enter a hashtag, then overwrite it into query.txt 
