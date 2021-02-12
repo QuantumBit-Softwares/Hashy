@@ -15,6 +15,9 @@ On Ubuntu Linux : <br>
 ```ruby
 git clone https://github.com/asher-lab/G4Modsim.git
 cd DatabaseProgram
-python3 run.py
+direct one -> python3 run.py
+OR
+javac Run.java
+java Run
 *** THIS WILL INSTALL MODULES AND CREATE THE DATABASE ***
 ```
