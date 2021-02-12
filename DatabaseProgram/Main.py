@@ -104,7 +104,7 @@ def main():
 	# creating object of TwitterClient Class 
     api = TwitterClient() 
 	# calling function to get tweets
-    query = 'GameStop' 
+    query = input("Enter hashtag: ")#'Biden' 
     tweets = api.get_tweets(query, count = 200) 
 
 	# picking positive tweets from tweets && # percentage of positive tweets 
