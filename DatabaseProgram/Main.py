@@ -13,6 +13,7 @@ import pandas as pd
 import twitter
 import csv_to_sqlite
 import csv, sys
+import os
 
 #################################################
 
@@ -457,27 +458,69 @@ def main():
       c = Counter(item)
     
 
- #   print(json.dumps(d1, indent=1))
+
 
     #all dumper txt and json
     
-    ############################################### 
-    # save as Json file
-    with open('SENTIMENTS.json', 'w') as json_file:
-        json.dump(d1, json_file)
-#    f = open('SENTIMENTS.json','w')
-#    print(json.dumps(d1, indent=1), file=f) # Python 3.x
+    #creating directory
+    path = r'Dumps' 
+    if not os.path.exists(path):
+        os.makedirs(path)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    path = r'CSV'
+    if not os.path.exists(path):
+        os.makedirs(path)
+    path = r'Databases'
+    if not os.path.exists(path):
+        os.makedirs(path)
     
+        
+    os.mknod("Dumps/SENTIMENTS.json")
+    os.mknod("Dumps/PICKEDTWEETS.json")
+    os.mknod("Dumps/PH_trends.json")
+    os.mknod("Dumps/related_hashtags_no_count.json")
+    os.mknod("Dumps/Freq_Words.txt")
+    os.mknod("Dumps/ScreenNames.txt")
+    os.mknod("Dumps/related_hashtags_with_count.txt")
+    os.mknod("Dumps/LexicalDiversity.json")
+    os.mknod("Dumps/mostpopulartweets.txt")
+    
+    os.mknod("CSV/SENTIMENTS.csv")
+    os.mknod("CSV/PICKEDTWEETS.csv")
+    os.mknod("CSV/PH_trends.csv")
+    os.mknod("CSV/related_hashtags_no_count.csv")
+    os.mknod("CSV/Freq_Words.csv")
+    os.mknod("CSV/ScreenNames.csv")
+    os.mknod("CSV/related_hashtags_with_count.csv")
+    os.mknod("CSV/LexicalDiversity.csv")
+    os.mknod("CSV/mostpopulartweets.csv")
+    
+    os.mknod("Databases/SENTIMENTS.db")
+    os.mknod("Databases/PICKEDTWEETS.db")
+    os.mknod("Databases/PH_trends.db")
+    os.mknod("Databases/related_hashtags_no_count.db")
+    os.mknod("Databases/Freq_Words.db")
+    os.mknod("Databases/ScreenNames.db")
+    os.mknod("Databases/related_hashtags_with_count.db")
+    os.mknod("Databases/LexicalDiversity.db")
+    os.mknod("Databases/mostpopulartweets.db")
 
     
-    with open('PICKEDTWEETS.json', 'w') as json_file:
-       json.dump(pickedtweets, json_file)
-#    f = open('PICKEDTWEETS.json','w')
-#    print(json.dumps(pickedtweets, indent=1), file=f) # Python 3.x
+        
     
-    f = open('PH_trends.json','w')
+    ############################################### 
+    # save as Json file
+    with open('Dumps/SENTIMENTS.json', 'w') as json_file:
+        json.dump(d1, json_file)
+   
+    with open('Dumps/PICKEDTWEETS.json', 'w') as json_file:
+       json.dump(pickedtweets, json_file)
+ 
+    f = open('Dumps/PH_trends.json','w')
     print(json.dumps(ph_trends, indent=1), file=f) # Python 3.x
-    f = open('related_hashtags_no_count.json','w')
+    
+    f = open('Dumps/related_hashtags_no_count.json','w')
     print(json.dumps(dataHH, indent = 1), file=f) # Python 3.x
     
     #Pretty table
@@ -490,15 +533,15 @@ def main():
       [ pt.add_row(kv) for kv in c.most_common()[:10] ]
       pt.align[label], pt.align['Count'] = 'l', 'r' # Set column alignment
       if counter == 0:
-        f = open('Freq_Words.txt','w')
+        f = open('Dumps/Freq_Words.txt','w')
         print (pt, file = f)
         counter = counter + 1
       if counter == 1:
-        f = open('ScreenNames.txt','w')
+        f = open('Dumps/ScreenNames.txt','w')
         print (pt, file = f)
         counter = counter + 1
       if counter ==  2:
-        f = open('related_hashtags_with_count.txt','w')
+        f = open('Dumps/related_hashtags_with_count.txt','w')
         print(pt, file = f)
         counter = counter + 1
       if counter == 3:
@@ -526,7 +569,7 @@ def main():
                 "AveWords" : AveWords
             }
     ]
-    f = open('LexicalDiversity.json','w')
+    f = open('Dumps/LexicalDiversity.json','w')
     print(json.dumps(data, indent = 1), file=f) # Python 3.x
     
     retweets = [
@@ -547,39 +590,39 @@ def main():
     [ pt.add_row(row) for row in sorted(retweets, reverse=True)[:5] ]
     pt.max_width['Text'] = 50
     pt.align= 'l'
-    f = open('mostpopulartweets.txt','w')
+    f = open('Dumps/mostpopulartweets.txt','w')
     print(pt, file = f)
     
     
     #### Conversion from dumps to csv
     # all the usual options are supported
-    with open('SENTIMENTS.json') as file:
+    with open('Dumps/SENTIMENTS.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker['SENTIMENTS'].flatten().get()
     df = pd.DataFrame(flat)
-    df.to_csv('SENTIMENTS.csv', encoding='utf-8')
+    df.to_csv('CSV/SENTIMENTS.csv', encoding='utf-8')
 
-    with open('PICKEDTWEETS.json') as file:
+    with open('Dumps/PICKEDTWEETS.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
-    df.to_csv('PICKEDTWEETS.csv', encoding='utf-8')
+    df.to_csv('CSV/PICKEDTWEETS.csv', encoding='utf-8')
         
-    with open('PH_trends.json') as file:
+    with open('Dumps/PH_trends.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker['trends'].flatten().get()
     df = pd.DataFrame(flat)
-    df.to_csv('PH_trends.csv', encoding='utf-8')
+    df.to_csv('CSV/PH_trends.csv', encoding='utf-8')
     
-    with open('related_hashtags_no_count.json') as file:
+    with open('Dumps/related_hashtags_no_count.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
-    df.to_csv('related_hashtags_no_count.csv', encoding='utf-8')
+    df.to_csv('CSV/related_hashtags_no_count.csv', encoding='utf-8')
     
     
     def pretty_table_to_tuples(input_str):
@@ -591,37 +634,74 @@ def main():
             if m:
                 yield m.groups()
             
-    with open('Freq_Words.txt') as fp:
+    with open('Dumps/Freq_Words.txt') as fp:
       input_string = fp.read()
-    with open('Freq_Words.csv', 'w') as outcsv:
+    with open('CSV/Freq_Words.csv', 'w') as outcsv:
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('ScreenNames.txt') as fp:
+    with open('Dumps/ScreenNames.txt') as fp:
       input_string = fp.read()
-    with open('ScreenNames.csv', 'w') as outcsv:
+    with open('CSV/ScreenNames.csv', 'w') as outcsv:
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('related_hashtags_with_count.txt') as fp:
+    with open('Dumps/related_hashtags_with_count.txt') as fp:
       input_string = fp.read()
-    with open('related_hashtags_with_count.csv', 'w') as outcsv:
+    with open('CSV/related_hashtags_with_count.csv', 'w') as outcsv:
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('mostpopulartweets.txt') as fp:
+    with open('Dumps/mostpopulartweets.txt') as fp:
       input_string = fp.read()
-    with open('mostpopulartweets.csv', 'w') as outcsv:
+    with open('CSV/mostpopulartweets.csv', 'w') as outcsv:
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('LexicalDiversity.json') as file:
+    with open('Dumps/LexicalDiversity.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
-    df.to_csv('LexicalDiversity.csv', encoding='utf-8')
+    df.to_csv('CSV/LexicalDiversity.csv', encoding='utf-8')
     
+    
+    #### Conversion from csv to sqlite
+    # all the usual options are supported
+    options = csv_to_sqlite.CsvOptions(typing_style="full", encoding="utf-8") 
+    
+        
+
+    
+    input_files = ["CSV/SENTIMENTS.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/SENTIMENTS.db", options)
+    
+    input_files = ["CSV/PICKEDTWEETS.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/PICKEDTWEETS.db", options)
+    
+    input_files = ["CSV/PH_trends.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/PH_trends.db", options)
+    
+    input_files = ["CSV/related_hashtags_no_count.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/related_hashtags_no_count.db", options)
+    
+    input_files = ["CSV/Freq_Words.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/Freq_Words.db", options)
+    
+    input_files = ["CSV/ScreenNames.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/ScreenNames.db", options)
+    
+    input_files = ["CSV/related_hashtags_with_count.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/related_hashtags_with_count.db", options)
+    
+    input_files = ["CSV/LexicalDiversity.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/LexicalDiversity.db", options)
+    
+    input_files = ["CSV/mostpopulartweets.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
+    
+    print("SUCESS")
+
 
 
     
