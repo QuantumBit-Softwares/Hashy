@@ -104,7 +104,11 @@ def main():
 	# creating object of TwitterClient Class 
     api = TwitterClient() 
 	# calling function to get tweets
-    query = input("Enter hashtag: ")#'Biden' 
+    
+    path = 'query.txt'
+    fileOpen = open(path,'r')
+    query = fileOpen.read()
+    #query = input("Enter hashtag: ")#'Biden' 
     tweets = api.get_tweets(query, count = 200) 
 
 	# picking positive tweets from tweets && # percentage of positive tweets 
