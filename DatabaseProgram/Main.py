@@ -14,6 +14,8 @@ import twitter
 import csv_to_sqlite
 import csv, sys
 import os
+from subprocess import call
+
 
 #################################################
 
@@ -483,7 +485,7 @@ def main():
     os.mknod("Dumps/Freq_Words.txt")
     os.mknod("Dumps/ScreenNames.txt")
     os.mknod("Dumps/related_hashtags_with_count.txt")
-    os.mknod("Dumps/most_popular_tweets.bin")
+    os.mknod("Dumps/mostpopulartweets.txt")
     os.mknod("Dumps/LexicalDiversity.json")
 
     
@@ -593,7 +595,7 @@ def main():
     [ pt.add_row(row) for row in sorted(retweets, reverse=True)[:5] ]
     pt.max_width['Text'] = 50
     pt.align= 'l'
-    f = open('Dumps/most_popular_tweets.bin','w')
+    f = open('Dumps/mostpopulartweets.txt','w')
     print(pt, file = f)
     
     
@@ -654,7 +656,8 @@ def main():
     with open('CSV/related_hashtags_with_count.csv', 'w') as outcsv:
         writer = csv.writer(outcsv)
         writer.writerows(pretty_table_to_tuples(input_string))
-        
+    
+    
         
         
         
@@ -732,6 +735,10 @@ def main():
     
     input_files = ["CSV/LexicalDiversity.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/LexicalDiversity.db", options)
+    
+    #input_files = ["CSV/mostpopulartweets.csv"] # pass in a list of CSV files
+    #csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
+    
     
     print("SUCESS")
 
