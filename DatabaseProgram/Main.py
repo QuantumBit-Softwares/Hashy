@@ -320,7 +320,7 @@ def main():
     OAUTH_TOKEN_SECRET = 'Bvos2WEu0uTzszmTsdiPS1l3PLu9n1uSfIZJd7FjpYAEr'
     auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
     twitter_api = twitter.Twitter(auth=auth)
-    print(twitter_api)
+    #print(twitter_api)
     
     #Trending Hashtags by WOE_ID
     # The Yahoo! Where On Earth ID for the entire world is 1.
@@ -558,27 +558,24 @@ def main():
     
     #Pretty table
     counter = 0 
-    for label, data in (('Word', words),
-      ('Screen Name', screen_names),
-      ('Hashtag', hashtags)):
+    for label, data in (('Word', words),('Screen Name', screen_names),('Hashtag', hashtags)):
       pt = PrettyTable(field_names=[label, 'Count'])
       c = Counter(data)
       [ pt.add_row(kv) for kv in c.most_common()[:10] ]
       pt.align[label], pt.align['Count'] = 'l', 'r' # Set column alignment
+      
       if counter == 0:
         f = open('Dumps/Freq_Words.txt','w')
         print (pt, file = f)
-        counter = counter + 1
       if counter == 1:
         f = open('Dumps/ScreenNames.txt','w')
         print (pt, file = f)
-        counter = counter + 1
       if counter ==  2:
         f = open('Dumps/related_hashtags_with_count.txt','w')
         print(pt, file = f)
-        counter = counter + 1
       if counter == 3:
         break
+      counter = counter + 1
         
     # A function for computing lexical diversity
     def lexical_diversity(tokens):
@@ -768,7 +765,7 @@ def main():
     #csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
     
     
-    print("SUCESS")
+    print("SUCCESS")
 
 
 
