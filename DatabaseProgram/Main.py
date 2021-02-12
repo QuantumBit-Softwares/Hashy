@@ -327,12 +327,37 @@ def main():
     # See https://dev.twitter.com/docs/api/1.1/get/trends/place and
     # http://developer.yahoo.com/geo/geoplanet/
 
+
     PH_WOE_ID = 23424934
 
     # Prefix ID with the underscore for query string parameterization.
     # Without the underscore, the twitter package appends the ID value
     # to the URL itself as a special case keyword argument.
+
+  
     ph_trends = twitter_api.trends.place(_id=PH_WOE_ID)
+
+    content = [ ]
+    x =  (json.dumps(ph_trends, indent=1))
+    content = x.replace("""trends""", "");
+    # Slice string to remove first character
+    content = content[0 : : ]
+    content = content[1 : : ]
+    content = content[2 : : ]
+    content = content[3 : : ]
+    content = content[4 : : ]
+
+    s = list(content)
+    size = len(s)
+    del s[size - 162: size-1]
+    s = ''.join([str(elem) for elem in s])
+    ph_trends = s
+
+
+
+    
+    
+    
     
     #collecting search results
     #Collecting search results
