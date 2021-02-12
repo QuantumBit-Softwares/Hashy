@@ -618,7 +618,8 @@ def main():
     with open('Dumps/PH_trends.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
-    flat = picker['trends'].flatten().get()
+    #flat = picker['trends'].flatten().get()
+    flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/PH_trends.csv', encoding='utf-8')
     
