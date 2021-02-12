@@ -548,7 +548,10 @@ def main():
        json.dump(pickedtweets, json_file)
  
     f = open('Dumps/PH_trends.json','w')
-    print(json.dumps(ph_trends, indent=1), file=f) # Python 3.x
+    print(ph_trends, file=f) # Python 3.x
+    
+    
+    
     
     f = open('Dumps/related_hashtags_no_count.json','w')
     print(json.dumps(dataHH, indent = 1), file=f) # Python 3.x
@@ -643,7 +646,6 @@ def main():
     with open('Dumps/PH_trends.json') as file:
         data = json.load(file)
     picker = CherryPicker(data)
-    #flat = picker['trends'].flatten().get()
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/PH_trends.csv', encoding='utf-8')
