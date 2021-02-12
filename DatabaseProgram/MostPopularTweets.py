@@ -13,7 +13,7 @@ with open('Dumps/most_popular_tweets.bin') as fp:
       input_string = fp.read()
 
 
-with open('CSV/mostpopulartweets.csv', 'w') as outcsv:
+with open('CSV/most_popular_tweets.csv', 'w') as outcsv:
     writer = csv.writer(outcsv)
     writer.writerows(pretty_table_to_tuples(input_string))
 
