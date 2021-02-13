@@ -620,8 +620,8 @@ def main():
     [ pt.add_row(row) for row in sorted(retweets, reverse=True)[:5] ]
     pt.max_width['Text'] = 50
     pt.align= 'l'
-    f = open('Dumps/mostpopulartweets.txt','w', encoding='utf-8')
-    print(pt, file = f)
+    with open('Dumps/mostpopulartweets.txt','w', encoding='utf-8') as f:
+        print(pt, file = f)
     
     
     #### Conversion from dumps to csv
@@ -654,6 +654,24 @@ def main():
     df = pd.DataFrame(flat)
     df.to_csv('CSV/related_hashtags_no_count.csv', encoding='utf-8')
     
+    with open('Dumps/LexicalDiversity.json') as file:
+        data = json.load(file)
+    picker = CherryPicker(data)
+    flat = picker.flatten().get()
+    df = pd.DataFrame(flat)
+    df.to_csv('CSV/LexicalDiversity.csv', encoding='utf-8')
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
     
     def pretty_table_to_tuples(input_str):
         lines = input_str.split("\n")
@@ -667,62 +685,28 @@ def main():
     with open('Dumps/Freq_Words.txt') as fp:
       input_string = fp.read()
     with open('CSV/Freq_Words.csv', 'w') as outcsv:
-        writer = csv.writer(outcsv)
+        writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
     with open('Dumps/ScreenNames.txt') as fp:
       input_string = fp.read()
     with open('CSV/ScreenNames.csv', 'w') as outcsv:
-        writer = csv.writer(outcsv)
+        writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
     with open('Dumps/related_hashtags_with_count.txt') as fp:
       input_string = fp.read()
     with open('CSV/related_hashtags_with_count.csv', 'w') as outcsv:
-        writer = csv.writer(outcsv)
+        writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
-    
-    
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    with open('Dumps/mostpopulartweets.txt') as fp:
+      input_string = fp.read()
+    with open('CSV/mostpopulartweets.csv', 'w') as outcsv:
+        writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
+        writer.writerows(pretty_table_to_tuples(input_string))
         
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    with open('Dumps/LexicalDiversity.json') as file:
-        data = json.load(file)
-    picker = CherryPicker(data)
-    flat = picker.flatten().get()
-    df = pd.DataFrame(flat)
-    df.to_csv('CSV/LexicalDiversity.csv', encoding='utf-8')
     
     
     
@@ -732,10 +716,10 @@ def main():
     
     #### Conversion from csv to sqlite
     # all the usual options are supported
-    options = csv_to_sqlite.CsvOptions(typing_style="full", encoding="utf-8") 
+ 
     
         
-
+    options = csv_to_sqlite.CsvOptions(typing_style="full", encoding="utf-8")
     
     input_files = ["CSV/SENTIMENTS.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/SENTIMENTS.db", options)
@@ -749,6 +733,9 @@ def main():
     input_files = ["CSV/related_hashtags_no_count.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/related_hashtags_no_count.db", options)
     
+    input_files = ["CSV/LexicalDiversity.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/LexicalDiversity.db", options)
+        
     input_files = ["CSV/Freq_Words.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/Freq_Words.db", options)
     
@@ -758,14 +745,12 @@ def main():
     input_files = ["CSV/related_hashtags_with_count.csv"] # pass in a list of CSV files
     csv_to_sqlite.write_csv(input_files, "Databases/related_hashtags_with_count.db", options)
     
-    input_files = ["CSV/LexicalDiversity.csv"] # pass in a list of CSV files
-    csv_to_sqlite.write_csv(input_files, "Databases/LexicalDiversity.db", options)
-    
-    #input_files = ["CSV/mostpopulartweets.csv"] # pass in a list of CSV files
-    #csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
+    input_files = ["CSV/mostpopulartweets.csv"] # pass in a list of CSV files
+    csv_to_sqlite.write_csv(input_files, "Databases/mostpopulartweets.db", options)
     
     
-    print("SUCCESS")
+    print("\nSUCCESS")
+    print("Database is successfully created!")
 
 
 
