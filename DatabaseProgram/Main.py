@@ -506,40 +506,46 @@ def main():
     if not os.path.exists(path):
         os.makedirs(path)
     
+    os.mkdir("Dumps")
+    os.mkdir("CSV")
+    os.mkdir("Databases")
+    
+                ############################## ##############################
         
-    os.mknod("Dumps/SENTIMENTS.json")
-    os.mknod("Dumps/PICKEDTWEETS.json")
-    os.mknod("Dumps/PH_trends.json")
-    os.mknod("Dumps/related_hashtags_no_count.json")
-    os.mknod("Dumps/Freq_Words.txt")
-    os.mknod("Dumps/ScreenNames.txt")
-    os.mknod("Dumps/related_hashtags_with_count.txt")
-    os.mknod("Dumps/mostpopulartweets.txt")
-    os.mknod("Dumps/LexicalDiversity.json")
+        
+    f = open("Dumps/SENTIMENTS.json","w+")
+    f = open("Dumps/PICKEDTWEETS.json","w+")
+    f = open("Dumps/PH_trends.json","w+")
+    f = open("Dumps/related_hashtags_no_count.json","w+")
+    f = open("Dumps/Freq_Words.txt","w+")
+    f = open("Dumps/ScreenNames.txt","w+")
+    f = open("Dumps/related_hashtags_with_count.txt","w+")
+    f = open("Dumps/mostpopulartweets.txt","w+")
+    f = open("Dumps/LexicalDiversity.json","w+")
 
     
-    os.mknod("CSV/SENTIMENTS.csv")
-    os.mknod("CSV/PICKEDTWEETS.csv")
-    os.mknod("CSV/PH_trends.csv")
-    os.mknod("CSV/related_hashtags_no_count.csv")
-    os.mknod("CSV/Freq_Words.csv")
-    os.mknod("CSV/ScreenNames.csv")
-    os.mknod("CSV/related_hashtags_with_count.csv")
-    os.mknod("CSV/mostpopulartweets.csv")
-    os.mknod("CSV/LexicalDiversity.csv")
+    f = open("CSV/SENTIMENTS.csv","w+")
+    f = open("CSV/PICKEDTWEETS.csv","w+")
+    f = open("CSV/PH_trends.csv","w+")
+    f = open("CSV/related_hashtags_no_count.csv","w+")
+    f = open("CSV/Freq_Words.csv","w+")
+    f = open("CSV/ScreenNames.csv","w+")
+    f = open("CSV/related_hashtags_with_count.csv","w+")
+    f = open("CSV/mostpopulartweets.csv","w+")
+    f = open("CSV/LexicalDiversity.csv","w+")
 
     
-    os.mknod("Databases/SENTIMENTS.db")
-    os.mknod("Databases/PICKEDTWEETS.db")
-    os.mknod("Databases/PH_trends.db")
-    os.mknod("Databases/related_hashtags_no_count.db")
-    os.mknod("Databases/Freq_Words.db")
-    os.mknod("Databases/ScreenNames.db")
-    os.mknod("Databases/related_hashtags_with_count.db")
-    os.mknod("Databases/mostpopulartweets.db")
-    os.mknod("Databases/LexicalDiversity.db")
+    f = open("Databases/SENTIMENTS.db","w+")
+    f = open("Databases/PICKEDTWEETS.db","w+")
+    f = open("Databases/PH_trends.db","w+")
+    f = open("Databases/related_hashtags_no_count.db","w+")
+    f = open("Databases/Freq_Words.db","w+")
+    f = open("Databases/ScreenNames.db","w+")
+    f = open("Databases/related_hashtags_with_count.db","w+")
+    f = open("Databases/mostpopulartweets.db","w+")
+    f = open("Databases/LexicalDiversity.db","w+")
 
-
+########################################################################################################################
     
         
     
