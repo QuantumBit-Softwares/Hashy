@@ -494,17 +494,7 @@ def main():
     #all dumper txt and json
     
     #creating directory
-    path = r'Dumps' 
-    if not os.path.exists(path):
-        os.makedirs(path)
-    if not os.path.exists(path):
-        os.makedirs(path)
-    path = r'CSV'
-    if not os.path.exists(path):
-        os.makedirs(path)
-    path = r'Databases'
-    if not os.path.exists(path):
-        os.makedirs(path)
+
     
     os.mkdir("Dumps")
     os.mkdir("CSV")
@@ -630,7 +620,7 @@ def main():
     [ pt.add_row(row) for row in sorted(retweets, reverse=True)[:5] ]
     pt.max_width['Text'] = 50
     pt.align= 'l'
-    f = open('Dumps/mostpopulartweets.txt','w')
+    f = open('Dumps/mostpopulartweets.txt','w', encoding='utf-8')
     print(pt, file = f)
     
     
