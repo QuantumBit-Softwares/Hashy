@@ -25,3 +25,5 @@ java Run
 
 ```(directory) DatabaseProgram``` -> must be deleted for every search. Otherwise error.<br>
 ```(file) query.txt``` -> the hashtag to be searched, make a program to java to enter a hashtag, then overwrite it into query.txt 
+
+#problem is csv from prettytable does have space in it
