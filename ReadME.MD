@@ -15,7 +15,7 @@ On Ubuntu Linux : <br>
 ```ruby
 git clone https://github.com/asher-lab/G4Modsim.git
 cd DatabaseProgram
-direct one -> python3 run.py
+direct one -> python3 Main.py
 OR
 javac Run.java
 java Run
