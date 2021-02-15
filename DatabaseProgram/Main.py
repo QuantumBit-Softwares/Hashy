@@ -22,6 +22,7 @@ from subprocess import call
 
 
 class TwitterClient(object): 
+   
 	def __init__(self): 
 		consumer_key = 'kqUMGE1g9Ye6mZ9IdIxWNamTK'
 		consumer_secret = 'ffMqQa8dlAsd4zysRFW47JM7Vk0M5MwSP0QKVOLjrufLSHsEMA'
@@ -101,9 +102,11 @@ class TwitterClient(object):
 
 #################################################
 def main(): 
+    print("Initializing data...")
 	# creating object of TwitterClient Class 
     api = TwitterClient() 
 	# calling function to get tweets
+    print("Performing Processes...")
     
     path = 'query.txt'
     fileOpen = open(path,'r')
@@ -682,27 +685,27 @@ def main():
             if m:
                 yield m.groups()
             
-    with open('Dumps/Freq_Words.txt') as fp:
+    with open('Dumps/Freq_Words.txt',encoding="utf8") as fp:
       input_string = fp.read()
-    with open('CSV/Freq_Words.csv', 'w') as outcsv:
+    with open('CSV/Freq_Words.csv', 'w',encoding="utf8") as outcsv:
         writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('Dumps/ScreenNames.txt') as fp:
+    with open('Dumps/ScreenNames.txt',encoding="utf8") as fp:
       input_string = fp.read()
-    with open('CSV/ScreenNames.csv', 'w') as outcsv:
+    with open('CSV/ScreenNames.csv', 'w',encoding="utf8") as outcsv:
         writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('Dumps/related_hashtags_with_count.txt') as fp:
+    with open('Dumps/related_hashtags_with_count.txt',encoding="utf8") as fp:
       input_string = fp.read()
-    with open('CSV/related_hashtags_with_count.csv', 'w') as outcsv:
+    with open('CSV/related_hashtags_with_count.csv', 'w',encoding="utf8") as outcsv:
         writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
-    with open('Dumps/mostpopulartweets.txt') as fp:
+    with open('Dumps/mostpopulartweets.txt',encoding="utf8") as fp:
       input_string = fp.read()
-    with open('CSV/mostpopulartweets.csv', 'w') as outcsv:
+    with open('CSV/mostpopulartweets.csv', 'w',encoding="utf8") as outcsv:
         writer = csv.writer(outcsv,delimiter=",", lineterminator='\n')
         writer.writerows(pretty_table_to_tuples(input_string))
         
