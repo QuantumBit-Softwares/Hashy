@@ -111,7 +111,7 @@ def main():
     path = 'query.txt'
     fileOpen = open(path,'r')
     query = fileOpen.read()
-    #query = input("Enter hashtag: ")#'Biden' 
+    #query = input("Enter hashtag: ")#Biden eg.
     tweets = api.get_tweets(query, count = 200) 
 
 	# picking positive tweets from tweets && # percentage of positive tweets 
@@ -506,37 +506,37 @@ def main():
                 ############################## ##############################
         
         
-    f = open("Dumps/SENTIMENTS.json","w+")
-    f = open("Dumps/PICKEDTWEETS.json","w+")
-    f = open("Dumps/PH_trends.json","w+")
-    f = open("Dumps/related_hashtags_no_count.json","w+")
-    f = open("Dumps/Freq_Words.txt","w+")
-    f = open("Dumps/ScreenNames.txt","w+")
-    f = open("Dumps/related_hashtags_with_count.txt","w+")
-    f = open("Dumps/mostpopulartweets.txt","w+")
-    f = open("Dumps/LexicalDiversity.json","w+")
+    f = open("Dumps/SENTIMENTS.json","w+",encoding='utf-8')
+    f = open("Dumps/PICKEDTWEETS.json","w+",encoding='utf-8')
+    f = open("Dumps/PH_trends.json","w+",encoding='utf-8')
+    f = open("Dumps/related_hashtags_no_count.json","w+",encoding='utf-8')
+    f = open("Dumps/Freq_Words.txt","w+",encoding='utf-8')
+    f = open("Dumps/ScreenNames.txt","w+",encoding='utf-8')
+    f = open("Dumps/related_hashtags_with_count.txt","w+",encoding='utf-8')
+    f = open("Dumps/mostpopulartweets.txt","w+",encoding='utf-8')
+    f = open("Dumps/LexicalDiversity.json","w+",encoding='utf-8')
 
     
-    f = open("CSV/SENTIMENTS.csv","w+")
-    f = open("CSV/PICKEDTWEETS.csv","w+")
-    f = open("CSV/PH_trends.csv","w+")
-    f = open("CSV/related_hashtags_no_count.csv","w+")
-    f = open("CSV/Freq_Words.csv","w+")
-    f = open("CSV/ScreenNames.csv","w+")
-    f = open("CSV/related_hashtags_with_count.csv","w+")
-    f = open("CSV/mostpopulartweets.csv","w+")
-    f = open("CSV/LexicalDiversity.csv","w+")
+    f = open("CSV/SENTIMENTS.csv","w+",encoding='utf-8')
+    f = open("CSV/PICKEDTWEETS.csv","w+",encoding='utf-8')
+    f = open("CSV/PH_trends.csv","w+",encoding='utf-8')
+    f = open("CSV/related_hashtags_no_count.csv","w+",encoding='utf-8')
+    f = open("CSV/Freq_Words.csv","w+",encoding='utf-8')
+    f = open("CSV/ScreenNames.csv","w+",encoding='utf-8')
+    f = open("CSV/related_hashtags_with_count.csv","w+",encoding='utf-8')
+    f = open("CSV/mostpopulartweets.csv","w+",encoding='utf-8')
+    f = open("CSV/LexicalDiversity.csv","w+",encoding='utf-8')
 
     
-    f = open("Databases/SENTIMENTS.db","w+")
-    f = open("Databases/PICKEDTWEETS.db","w+")
-    f = open("Databases/PH_trends.db","w+")
-    f = open("Databases/related_hashtags_no_count.db","w+")
-    f = open("Databases/Freq_Words.db","w+")
-    f = open("Databases/ScreenNames.db","w+")
-    f = open("Databases/related_hashtags_with_count.db","w+")
-    f = open("Databases/mostpopulartweets.db","w+")
-    f = open("Databases/LexicalDiversity.db","w+")
+    f = open("Databases/SENTIMENTS.db","w+",encoding='utf-8')
+    f = open("Databases/PICKEDTWEETS.db","w+",encoding='utf-8')
+    f = open("Databases/PH_trends.db","w+",encoding='utf-8')
+    f = open("Databases/related_hashtags_no_count.db","w+",encoding='utf-8')
+    f = open("Databases/Freq_Words.db","w+",encoding='utf-8')
+    f = open("Databases/ScreenNames.db","w+",encoding='utf-8')
+    f = open("Databases/related_hashtags_with_count.db","w+",encoding='utf-8')
+    f = open("Databases/mostpopulartweets.db","w+",encoding='utf-8')
+    f = open("Databases/LexicalDiversity.db","w+",encoding='utf-8')
 
 ########################################################################################################################
     
@@ -544,19 +544,19 @@ def main():
     
     ############################################### 
     # save as Json file
-    with open('Dumps/SENTIMENTS.json', 'w') as json_file:
+    with open('Dumps/SENTIMENTS.json', 'w',encoding='utf-8') as json_file:
         json.dump(d1, json_file)
    
-    with open('Dumps/PICKEDTWEETS.json', 'w') as json_file:
+    with open('Dumps/PICKEDTWEETS.json', 'w',encoding='utf-8') as json_file:
        json.dump(pickedtweets, json_file)
  
-    f = open('Dumps/PH_trends.json','w')
+    f = open('Dumps/PH_trends.json','w',encoding='utf-8')
     print(ph_trends, file=f) # Python 3.x
     
     
     
     
-    f = open('Dumps/related_hashtags_no_count.json','w')
+    f = open('Dumps/related_hashtags_no_count.json','w',encoding='utf-8')
     print(json.dumps(dataHH, indent = 1), file=f) # Python 3.x
     
     #Pretty table
@@ -568,13 +568,13 @@ def main():
       pt.align[label], pt.align['Count'] = 'l', 'r' # Set column alignment
       
       if counter == 0:
-        f = open('Dumps/Freq_Words.txt','w')
+        f = open('Dumps/Freq_Words.txt','w',encoding='utf-8')
         print (pt, file = f)
       if counter == 1:
-        f = open('Dumps/ScreenNames.txt','w')
+        f = open('Dumps/ScreenNames.txt','w',encoding='utf-8')
         print (pt, file = f)
       if counter ==  2:
-        f = open('Dumps/related_hashtags_with_count.txt','w')
+        f = open('Dumps/related_hashtags_with_count.txt','w',encoding='utf-8')
         print(pt, file = f)
       if counter == 3:
         break
@@ -602,7 +602,7 @@ def main():
                 "AveWords" : AveWords
             }
     ]
-    f = open('Dumps/LexicalDiversity.json','w')
+    f = open('Dumps/LexicalDiversity.json','w',encoding='utf-8')
     print(json.dumps(data, indent = 1), file=f) # Python 3.x
     
     retweets = [
@@ -629,35 +629,35 @@ def main():
     
     #### Conversion from dumps to csv
     # all the usual options are supported
-    with open('Dumps/SENTIMENTS.json') as file:
+    with open('Dumps/SENTIMENTS.json',encoding='utf-8') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker['SENTIMENTS'].flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/SENTIMENTS.csv', encoding='utf-8')
 
-    with open('Dumps/PICKEDTWEETS.json') as file:
+    with open('Dumps/PICKEDTWEETS.json',encoding='utf-8') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/PICKEDTWEETS.csv', encoding='utf-8')
         
-    with open('Dumps/PH_trends.json') as file:
+    with open('Dumps/PH_trends.json',encoding='utf-8') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/PH_trends.csv', encoding='utf-8')
     
-    with open('Dumps/related_hashtags_no_count.json') as file:
+    with open('Dumps/related_hashtags_no_count.json',encoding='utf-8') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
     df = pd.DataFrame(flat)
     df.to_csv('CSV/related_hashtags_no_count.csv', encoding='utf-8')
     
-    with open('Dumps/LexicalDiversity.json') as file:
+    with open('Dumps/LexicalDiversity.json',encoding='utf-8') as file:
         data = json.load(file)
     picker = CherryPicker(data)
     flat = picker.flatten().get()
@@ -754,21 +754,6 @@ def main():
     
     print("\nSUCCESS")
     print("Database is successfully created!")
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
 
 
 
