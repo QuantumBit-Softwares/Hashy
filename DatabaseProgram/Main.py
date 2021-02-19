@@ -24,10 +24,10 @@ from subprocess import call
 class TwitterClient(object): 
    
 	def __init__(self): 
-		consumer_key = 'kqUMGE1g9Ye6mZ9IdIxWNamTK'
-		consumer_secret = 'ffMqQa8dlAsd4zysRFW47JM7Vk0M5MwSP0QKVOLjrufLSHsEMA'
-		access_token = '1156902832269774848-w0E7G6H024TGXg7ef6aM8KmCezVwoK'
-		access_token_secret = 'Bvos2WEu0uTzszmTsdiPS1l3PLu9n1uSfIZJd7FjpYAEr'
+		consumer_key = 'insert here'
+		consumer_secret = 'insert here'
+		access_token = 'insert here'
+		access_token_secret = 'insert here'
 		try: 
 			# create OAuthHandler object 
 			self.auth = OAuthHandler(consumer_key, consumer_secret) 
