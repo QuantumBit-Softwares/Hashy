@@ -1,3 +1,6 @@
+Download the standalone version of Hashy:
+https://drive.google.com/file/d/1H4vfB1iET1pUv2aMGvNeY5zADkZ969WR/view
+
 ## Usage
 <br>
 
