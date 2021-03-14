@@ -1,7 +1,15 @@
-https://docs.google.com/document/d/1FolRmCZEt-29BuerPDxHiZE8vnURxJ94T-73yI-3BpU/edit?usp=sharing (updating)
-
-
 ## Usage
+<br>
+
+# On User Interface:
+
+```ruby
+javac -source 1.8 -target 1.8 -d . *.java
+jar cfe Hashy.jar hashy.MainWindow *
+```
+
+
+
 
 <br>
 
