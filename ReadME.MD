@@ -27,8 +27,6 @@ java Run
 ```(file) query.txt``` -> the hashtag to be searched, make a program to java to enter a hashtag, then overwrite it into query.txt 
 
 <br>
-![Hashy FlowChart](https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png)
-<br>
 
 ![alt text](https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png?raw=true)
 
