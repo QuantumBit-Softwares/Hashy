@@ -28,4 +28,13 @@ java Run
 
 <br>
 ![Hashy FlowChart](https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png)
+<br>
+
 ![alt text](https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png?raw=true)
+
+
+<br>
+<p align="center">
+  <img src="https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png?raw=true" width="350" title="hover text">
+  <img src="https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png?raw=true" width="350" alt="accessibility text">
+</p>
