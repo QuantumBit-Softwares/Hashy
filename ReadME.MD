@@ -38,3 +38,14 @@ java Run
 
 ![alt text](https://github.com/QuantumBit-Softwares/Hashy/blob/main/Database/hashy.png?raw=true)
 
+<br>
+
+### Screenshots
+
+<p align="center">
+  <img src="https://github.com/QuantumBit-Softwares/Hashy/blob/main/TemplateUI/1.png" width="350">
+  <img src="https://github.com/QuantumBit-Softwares/Hashy/blob/main/TemplateUI/2.png" width="350">
+  <img src="https://github.com/QuantumBit-Softwares/Hashy/blob/main/TemplateUI/3.png" width="350">
+ 
+</p>
+
